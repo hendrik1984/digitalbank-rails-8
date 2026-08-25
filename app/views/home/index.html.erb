@@ -1,0 +1,44 @@
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="bg-white rounded-lg shadow-md p-8">
+
+    <h1 class="text-3xl font-bold text-gray-900">
+      Digital Bank
+    </h1>
+
+    <p class="mt-2 text-gray-600">
+      Turbo Frame Demo
+    </p>
+
+    <%= turbo_frame_tag "account_info" do %>
+      <div class="mt-6 p-4 bg-gray-100 rounded-lg">
+        <h2 class="font-bold">
+          Account Information
+        </h2>
+
+        <p class="mt-2 text-gray-600">
+          This content is inside a Turbo Frame.
+        </p>
+
+        <%= link_to "Load Account",
+            pages_about_path,
+            class: "inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg" %>
+      </div>
+    <% end %>
+
+    <div data-controller="toggle">
+
+      <p 
+        data-toggle-target="message"
+        class="mt-4 text-gray-600">
+        This is a Stimulus controller.
+      </p>
+
+      <button
+        data-action="click->toggle#toggle"
+        class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg">
+        Toggle Message
+      </button>
+
+    </div>
+  </div>
+</div>

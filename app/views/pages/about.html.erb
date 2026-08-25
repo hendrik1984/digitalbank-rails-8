@@ -1,0 +1,15 @@
+<%= turbo_frame_tag "account_info" do %>
+  <div class="mt-6 p-4 bg-green-100 rounded-lg">
+    <h2 class="font-bold text-green-800">
+      Account Loaded
+    </h2>
+
+    <p class="mt-2 text-green-700">
+      Turbo replaced only this frame.
+    </p>
+
+    <%= link_to "Back",
+        root_path,
+        class: "inline-block mt-4 px-4 py-2 bg-gray-800 text-white rounded-lg" %>
+  </div>
+<% end %>

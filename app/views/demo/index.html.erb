@@ -1,0 +1,22 @@
+<div class="min-h-screen bg-gray-100 flex items-center justify-center">
+  <div class="bg-white rounded-lg shadow-md p-8">
+
+    <h1 class="text-3xl font-bold">
+      Turbo Streams Demo
+    </h1>
+
+    <%= turbo_frame_tag "demo" do %>
+
+      <div id="message" class="mt-6 p-4 bg-gray-100 rounded-lg">
+        Original message
+      </div>
+
+      <%= button_to "Change Message",
+          demo_path,
+          method: :post,
+          class: "mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg" %>
+
+    <% end %>
+
+  </div>
+</div>
