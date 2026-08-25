@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "demo", to: "demo#index"
   post "demo", to: "demo#update"
   
