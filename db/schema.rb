@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_101753) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_123000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -62,7 +62,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_101753) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "withdrawals", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.decimal "amount", precision: 20, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.string "reference", null: false
+    t.string "status", default: "pending", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_withdrawals_on_account_id"
+  end
+
   add_foreign_key "accounts", "users"
   add_foreign_key "deposits", "accounts"
   add_foreign_key "payments", "deposits"
+  add_foreign_key "withdrawals", "accounts"
 end

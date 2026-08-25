@@ -1,6 +1,5 @@
-class Deposit < ApplicationRecord
+class Withdrawal < ApplicationRecord
   belongs_to :account
-  has_one :payment
 
   validates :amount, numericality: { greater_than: 0 }
   validates :reference, presence: true, uniqueness: true
@@ -11,6 +10,4 @@ class Deposit < ApplicationRecord
     failed: "failed",
     cancelled: "cancelled"
   }
-
-
 end
