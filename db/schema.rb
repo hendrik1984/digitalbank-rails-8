@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_021606) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_023407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -24,6 +24,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_021606) do
     t.bigint "user_id", null: false
     t.index ["account_number"], name: "index_accounts_on_account_number", unique: true
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "deposits", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.decimal "amount", precision: 20, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.string "reference", null: false
+    t.string "status", default: "pending", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_deposits_on_account_id"
+    t.index ["reference"], name: "index_deposits_on_reference", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +52,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_021606) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "deposits", "accounts"
 end
