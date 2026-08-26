@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  transaction_type: MyString
+  direction: MyString
+  amount: 9.99
+  reference: MyString
+  description: MyText
+
+two:
+  account: two
+  transaction_type: MyString
+  direction: MyString
+  amount: 9.99
+  reference: MyString
+  description: MyText

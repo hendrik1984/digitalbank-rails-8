@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_123728) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_26_083645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -46,6 +46,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_123728) do
     t.datetime "updated_at", null: false
     t.index ["deposit_id"], name: "index_payments_on_deposit_id"
     t.index ["reference"], name: "index_payments_on_reference", unique: true
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.decimal "amount", precision: 20, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "direction", null: false
+    t.string "reference", null: false
+    t.string "transaction_type", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_transactions_on_account_id"
+    t.index ["reference"], name: "index_transactions_on_reference", unique: true
   end
 
   create_table "transfers", force: :cascade do |t|
@@ -88,6 +101,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_123728) do
   add_foreign_key "accounts", "users"
   add_foreign_key "deposits", "accounts"
   add_foreign_key "payments", "deposits"
+  add_foreign_key "transactions", "accounts"
   add_foreign_key "transfers", "accounts", column: "destination_account_id"
   add_foreign_key "transfers", "accounts", column: "source_account_id"
   add_foreign_key "withdrawals", "accounts"
