@@ -8,6 +8,12 @@
 
     <% if user_signed_in? %>
       <div class="flex items-center gap-4">
+        <% if current_user.admin? %>
+          <%= link_to "Admin",
+              admin_root_path,
+              class: "mt-1 text-sm font-medium text-gray-700 hover:text-blue-600" %>
+        <% end %>
+
         <div class="relative" data-controller="dropdown">
           <button
             type="button"

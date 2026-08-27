@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get "dashboard/index"
+    get "admin/index"
+  end
+  get "admin/index"
   get "profiles/show"
   devise_for :users
   get "demo", to: "demo#index"
@@ -21,4 +26,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+
+  namespace :admin do
+    root "dashboard#index"
+  end
+  
 end

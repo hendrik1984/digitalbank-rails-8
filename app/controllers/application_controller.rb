@@ -4,4 +4,14 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  private
+
+  def require_admin!
+    authenticate_user!
+
+    unless current_user.admin?
+      redirect_to root_path, alert: "You are not authorized to access this page."
+    end
+  end
 end

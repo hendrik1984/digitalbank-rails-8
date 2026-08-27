@@ -10,5 +10,10 @@ class User < ApplicationRecord
     closed: "closed"
   }
 
+  enum :role,  {
+    customer: "customer",
+    admin: "admin"
+  }
+
   has_many :accounts
 end
