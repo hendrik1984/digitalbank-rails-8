@@ -9,6 +9,8 @@ class Transfer < ApplicationRecord
   validates :reference, presence: true, uniqueness: true
   validates :status, presence: true
   
+  validate :source_and_destination_must_be_different
+
   enum :status,  {
     pending: "pending",
     completed: "completed",
@@ -16,4 +18,11 @@ class Transfer < ApplicationRecord
     cancelled: "cancelled"
   }
 
+  def source_and_destination_must_be_different
+    return if source_account.blank? || destination_account.blank?
+
+    if source_account == destination_account
+      errors.add(:destination_account, "must be different from source account")
+    end
+  end
 end

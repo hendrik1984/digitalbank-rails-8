@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
   belongs_to :user
+  has_many :accounts, dependent: :restrict_with_error
   has_many :deposits
   has_many :withdrawals
   
