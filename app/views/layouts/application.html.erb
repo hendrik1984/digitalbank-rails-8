@@ -23,9 +23,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main>
-      <%= yield %>
-    </main>
+  <body class="bg-gray-100">
+    <%= render "shared/nav" %>
+    <%= yield %>
   </body>
 </html>
