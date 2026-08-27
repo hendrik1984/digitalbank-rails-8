@@ -9,6 +9,13 @@
 
 * check continues logs for running services : docker compose logs -f web
 
+* to check or debugger in rails docker add this line on docker compose
+  web:
+    stdin_open: true
+    tty: true
+
+* debug using byebug. run the web container first and then docker compose attach web to load container shell and ready to debug
+
 # Rails
 * run rails command via docker: docker compose exec web bin/rails db:create
 
@@ -24,7 +31,7 @@
 # Recommended practical roadmap
 ## Phase 1 — Core Banking
 
-### Milestone 1 — Foundation
+### Milestone 1 — Foundation [DONE]
 
 * Rails 8
 * PostgreSQL
@@ -33,7 +40,7 @@
 * Basic layout
 * Home page
 
-### Milestone 2 — Authentication
+### Milestone 2 — Authentication [DONE]
 
 * Registration
 * Login
@@ -41,14 +48,14 @@
 * Profile
 * Authorization
 
-### Milestone 3 — Bank Account
+### Milestone 3 — Bank Account [DONE]
 
 * Account creation
 * Account number
 * Balance
 * Account status
 
-### Milestone 4 — Deposit
+### Milestone 4 — Deposit [ON_PROGRESS]
 
 * Deposit form
 * Validation

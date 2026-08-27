@@ -14,6 +14,8 @@ class Account < ApplicationRecord
 
   has_many :transactions
 
+  before_validation :generate_account_number, on: :create
+
   validates :account_number, presence: true, uniqueness: true
   validates :balance, numericality: { greater_than_or_equal_to: 0 }
   validates :status, presence: true
@@ -23,4 +25,8 @@ class Account < ApplicationRecord
     suspended: "suspended",
     closed: "closed"
   }
+
+  def generate_account_number
+    self.account_number ||= SecureRandom.random_number(1_000_000_000).to_s.rjust(10, "0")
+  end
 end

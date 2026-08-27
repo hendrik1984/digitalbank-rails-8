@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "accounts/index"
+  get "accounts/new"
+  get "accounts/create"
   namespace :admin do
     get "dashboard/index"
     get "admin/index"
@@ -24,11 +27,13 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  # Resources
+  resources :accounts, only: [:index, :new, :create]
+
   # Defines the root path route ("/")
   root "home#index"
 
   namespace :admin do
     root "dashboard#index"
   end
-  
 end

@@ -1,0 +1,12 @@
+<div>
+  <h1 class="font-bold text-4xl">Accounts List <%= current_user.name %></h1>
+  
+  <div>
+    <% @accounts.each do |acc| %>
+      <p>Account Currency: <%= acc.currency %></p>
+      <p>Account Number: <%= acc.account_number %></p>
+      <p>Balance: <%= acc.balance %></p>
+      <p>Status: <%= acc.status %></p>
+    <% end %>
+  </div>
+</div>
