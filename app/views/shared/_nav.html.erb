@@ -2,15 +2,32 @@
   <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
     <div>
       <span class="text-lg font-bold text-gray-900">
-        Digital Bank
+        <%= link_to "Digital Bank", root_path %>
       </span>
     </div>
 
     <% if user_signed_in? %>
       <div class="flex items-center gap-4">
-        <span class="text-sm text-gray-600">
-          <%= current_user.email %>
-        </span>
+        <div class="relative" data-controller="dropdown">
+          <button
+            type="button"
+            data-action="click->dropdown#toggle"
+            class="text-sm text-gray-600 hover:text-blue-600 cursor-pointer"
+          >
+            <%= current_user.email %>
+          </button>
+
+          <div
+            data-dropdown-target="menu"
+            class="hidden absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black/5 z-50"
+          >
+            <div class="py-1">
+              <%= link_to "Profile",
+                    profile_path,
+                    class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+            </div>
+          </div>
+        </div>
 
         <%= button_to "Sign out",
               destroy_user_session_path,

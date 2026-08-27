@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  get "profiles/show"
   devise_for :users
   get "demo", to: "demo#index"
   post "demo", to: "demo#update"
   
   get "pages/home"
   get "pages/about"
-  
+  get "profile", to: "profiles#show"
   get "home/index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
