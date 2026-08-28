@@ -55,12 +55,21 @@
 * Balance
 * Account status
 
-### Milestone 4 — Deposit [ON_PROGRESS]
+### Milestone 4 — Deposit [HOLD]
 
 * Deposit form
 * Validation
 * Balance update
 * Transaction record
+
+### Milestone 4.A — Simulated Payment Gateway [ON_PROGRESS]
+* Separate application
+* API authentication
+* Payment request
+* Payment status
+* Callback/webhook
+* Security
+* Digital Bank integration
 
 ### Milestone 5 — Withdrawal
 
