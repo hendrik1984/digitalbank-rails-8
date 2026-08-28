@@ -1,17 +1,34 @@
 Rails.application.routes.draw do
-  get "accounts/index"
-  get "accounts/new"
-  get "accounts/create"
+  # namespace
+  namespace :api do
+    namespace :v1 do
+      get "payment_webhooks", to: "payment_webhooks#create"
+    end
+  end
+  
   namespace :admin do
     get "dashboard/index"
     get "admin/index"
   end
+
+  namespace :admin do
+    root "dashboard#index"
+  end
+
+  # Resources
+  resources :accounts, only: [:index, :new, :create]
+
+  # Devise
+  devise_for :users
+
+  # simple get post
+  get "accounts/index"
+  get "accounts/new"
+  get "accounts/create"
   get "admin/index"
   get "profiles/show"
-  devise_for :users
   get "demo", to: "demo#index"
   post "demo", to: "demo#update"
-  
   get "pages/home"
   get "pages/about"
   get "profile", to: "profiles#show"
@@ -23,17 +40,6 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Resources
-  resources :accounts, only: [:index, :new, :create]
-
   # Defines the root path route ("/")
   root "home#index"
-
-  namespace :admin do
-    root "dashboard#index"
-  end
 end
