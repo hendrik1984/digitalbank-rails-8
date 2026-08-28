@@ -1,30 +1,30 @@
 # README
 
 # Docker
-* build and run services: docker compose up -d build
++ build and run services: docker compose up -d build
 
-* run 1 services: docker compose up -d db
++ run 1 services: docker compose up -d db
 
-* check logs for running services : docker compose logs web
++ check logs for running services : docker compose logs web
 
-* check continues logs for running services : docker compose logs -f web
++ check continues logs for running services : docker compose logs -f web
 
-* to check or debugger in rails docker add this line on docker compose
++ to check or debugger in rails docker add this line on docker compose
   web:
     stdin_open: true
     tty: true
 
-* debug using byebug. run the web container first and then docker compose attach web to load container shell and ready to debug
++ debug using byebug. run the web container first and then docker compose attach web to load container shell and ready to debug
 
 # Rails
-* run rails command via docker: docker compose exec web bin/rails db:create
++ run rails command via docker: docker compose exec web bin/rails db:create
 
-* verify rails to postgres connection via docker: docker compose exec web bin/rails runner "puts ActiveRecord::Base.connection.active?"docker compose exec web bin/rails runner "puts ActiveRecord::Base.connection.active?"
++ verify rails to postgres connection via docker: docker compose exec web bin/rails runner "puts ActiveRecord::Base.connection.active?"docker compose exec web bin/rails runner "puts ActiveRecord::Base.connection.active?"
 
-* restart web via docker: docker compose restart web
++ restart web via docker: docker compose restart web
 
 # Postgres
-* open console via docker: docker compose exec db psql -U digital_bank -d digital_bank_development -c '\conninfo' 
++ open console via docker: docker compose exec db psql -U digital_bank -d digital_bank_development -c '\conninfo' 
 
 
 
@@ -33,59 +33,63 @@
 
 ### Milestone 1 — Foundation [DONE]
 
-* Rails 8
-* PostgreSQL
-* Tailwind
-* Git
-* Basic layout
-* Home page
++ Rails 8
++ PostgreSQL
++ Tailwind
++ Git
++ Basic layout
++ Home page
 
 ### Milestone 2 — Authentication [DONE]
 
-* Registration
-* Login
-* Logout
-* Profile
-* Authorization
++ Registration
++ Login
++ Logout
++ Profile
++ Authorization
 
 ### Milestone 3 — Bank Account [DONE]
 
-* Account creation
-* Account number
-* Balance
-* Account status
++ Account creation
++ Account number
++ Balance
++ Account status
 
-### Milestone 4 — Deposit [HOLD]
+### Milestone 4 — Deposit [HERE]
++ Deposit form
++ Validation
++ Balance update
++ Transaction record
 
-* Deposit form
-* Validation
-* Balance update
-* Transaction record
-
-### Milestone 4.A — Simulated Payment Gateway [ON_PROGRESS]
-* Separate application
-* API authentication
-* Payment request
-* Payment status
-* Callback/webhook
-* Security
-* Digital Bank integration
+### Milestone 4.A — Simulated Payment Gateway [HOLD]
++ Separate application
++ API authentication
++ Payment request
++ Payment status
++ Callback/webhook
++ Security
++ Digital Bank integration [CONTINUE_LATER]
+    - Webhook authentication
+    - Webhook failure handling/retry
+    - Idempotency
+    - Proper webhook processing on the Digital Bank side
+    - End-to-end deposit flow verification
 
 ### Milestone 5 — Withdrawal
 
-* Withdrawal form
-* Insufficient balance
-* Balance update
-* Transaction record
++ Withdrawal form
++ Insufficient balance
++ Balance update
++ Transaction record
 
 ### Milestone 6 — Transfer
 
-* Sender
-* Receiver
-* Transfer amount
-* Balance validation
-* Atomic PostgreSQL transaction
-* Transaction records
++ Sender
++ Receiver
++ Transfer amount
++ Balance validation
++ Atomic PostgreSQL transaction
++ Transaction records
 
 At this point you have a working bank.
 
@@ -102,19 +106,19 @@ User
 ### Milestone 7 — Transaction History
 
 Build:
-* Transaction list
-* Search
-* Filtering
-* Pagination
-* Transaction details
++ Transaction list
++ Search
++ Filtering
++ Pagination
++ Transaction details
 
 ### Milestone 8 — Hotwire / Turbo
 
 Now introduce:
 
-* Turbo Drive
-* Turbo Frames
-* Turbo Streams
++ Turbo Drive
++ Turbo Frames
++ Turbo Streams
 
 For example:
 
@@ -129,13 +133,13 @@ Turbo Stream
 
 ### Milestone 9 — Stimulus
 
-* Use Stimulus for:
-* Confirmation modal
-* Currency formatting
-* Submit button state
-* Transfer UI
-* Deposit/withdraw UI
-* Client-side interaction
++ Use Stimulus for:
++ Confirmation modal
++ Currency formatting
++ Submit button state
++ Transfer UI
++ Deposit/withdraw UI
++ Client-side interaction
 
 At this point you've learned the main reason you're building this project: Rails + Hotwire + Stimulus.
 
