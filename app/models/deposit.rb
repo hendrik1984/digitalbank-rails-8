@@ -18,6 +18,14 @@ class Deposit < ApplicationRecord
     cancelled: "cancelled"
   }
 
+  scope :search, -> (query) {
+    if query.present?
+      where("reference ILIKE ?", "%#{sanitize_sql_like(query)}%")
+    else
+      all
+    end
+  }
+  
   private
 
   def generate_reference

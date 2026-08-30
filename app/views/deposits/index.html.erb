@@ -1,0 +1,109 @@
+<%= turbo_frame_tag "deposits" do %>
+    <div class="max-w-5xl justify-center mx-auto flex flex-col mt-4">
+        <div class="overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="inline-block min-w-full align-middle">
+                <div class="p-4">
+                    <div>
+                        <h1 class="text-2xl font-bold">Deposit History</h1>
+                        <p class="text-gray-600">
+                            Account: <%= @account.account_number %>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-4">
+				    <label for="table-search" class="sr-only">Search</label>
+                    <div class="relative mt-1">
+                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                            <svg
+                                class="w-5 h-5 text-gray-500"
+                                fill="currentColor"
+                                viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </div>
+                        <input
+                            type="text"
+                            id="table-search"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5"
+                            placeholder="Search for items"
+                        />
+                    </div>
+                </div>
+
+                <div class="overflow-hidden">
+                    <% if @deposits.any? %>
+                        <table noTheme class="min-w-full table-fixed divide-y divide-green-400">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th scope="col" class="p-4">
+                                        #
+                                    </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                        Reference
+                                    </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                        Amount
+                                    </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                        Payment Method
+                                    </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                        Status
+                                    </th>
+                                    <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                                        Created
+                                    </th>
+                                </tr>
+                            </thead>
+                            <% @deposits.each do |dp| %>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr class="hover:bg-gray-100">
+                                        <td class="p-4 w-4">
+                                            #
+                                        </td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                            <%= dp.reference %>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                            <%= number_to_currency(
+                                                dp.amount,
+                                                unit: dp.currency,
+                                                delimiter: ",",
+                                                format: "%u %n"
+                                            ) %>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                            <%= dp.payment_method_code %>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                            <%= dp.status.capitalize %>
+                                        </td>
+                                        <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                            <%= l(dp.created_at, format: :short) %>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            <% end %>
+                        </table>
+                    <% else %>
+                        <p class="p-4 text-gray-600">
+                            No deposit transactions yet.
+                        </p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+<div class="mt-6">
+  <%= paginate @deposits, params: { q: params[:q] } %>
+</div>
+

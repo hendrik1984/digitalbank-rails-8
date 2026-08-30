@@ -2,9 +2,22 @@ class DepositsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_account
   
+  def index
+    @account = current_user.accounts.find(params[:account_id])
+    @deposits = @account.deposits
+                .search(params[:q])
+                .order(created_at: :desc)
+                .page(params[:page])
+                .per(25)
+  end
+
   def new
     @deposit = @account.deposits.build
     @payment_methods = PaymentGatewayClient.new.payment_methods
+
+  rescue StandardError => e
+    flash[:error] = "Payment Gateway unavailable, Please try again later."
+    redirect_to accounts_path and return
   end
 
   def create

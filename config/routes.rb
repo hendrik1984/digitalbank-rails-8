@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   # Resources
   resources :accounts, only: [:index, :new, :create] do
-    resources :deposits, only: [:new, :create]
+    resources :deposits, only: [:index, :new, :create]
   end
   resources :accounts, only: [:index, :new, :create, :show]
 

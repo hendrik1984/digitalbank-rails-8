@@ -40,9 +40,12 @@
                       <td class="py-4 px-6 text-center border-b border-gray-200">
                           <span class="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"><%= acc.status %></span>
                       </td>
-                      <td class="py-4 px-6 text-center border-b border-gray-200">
+                      <td class="flex flex-row gap-4 py-4 px-6 text-center border-b border-gray-200">
+                        <%= link_to "Deposit History", account_deposits_path(acc),
+                            class: "flex items-center rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700" %>
+                        
                         <%= link_to "Deposit", new_account_deposit_path(acc), 
-                            class: "rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700" %>
+                            class: "flex items-center rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700" %>
                       </td>
                   </tr>
                 <% end %>
