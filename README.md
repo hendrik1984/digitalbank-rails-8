@@ -14,7 +14,7 @@
     stdin_open: true
     tty: true
 
-+ debug using byebug. run the web container first and then docker compose attach web to load container shell and ready to debug
++ debug using byebug. run the web container first and then `docker compose attach web` to load container shell and ready to debug
 
 # Rails
 + run rails command via docker: docker compose exec web bin/rails db:create

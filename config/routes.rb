@@ -17,22 +17,27 @@ Rails.application.routes.draw do
   end
 
   # Resources
-  resources :accounts, only: [:index, :new, :create]
+  resources :accounts, only: [:index, :new, :create] do
+    resources :deposits, only: [:new, :create]
+  end
+  resources :accounts, only: [:index, :new, :create, :show]
 
   # Devise
   devise_for :users
 
   # simple get post
-  get "accounts/index"
-  get "accounts/new"
-  get "accounts/create"
   get "admin/index"
+  
   get "profiles/show"
+  
   get "demo", to: "demo#index"
   post "demo", to: "demo#update"
+  
   get "pages/home"
   get "pages/about"
+  
   get "profile", to: "profiles#show"
+  
   get "home/index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
