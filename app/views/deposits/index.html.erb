@@ -28,12 +28,20 @@
                                 ></path>
                             </svg>
                         </div>
-                        <input
-                            type="text"
-                            id="table-search"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5"
-                            placeholder="Search for items"
-                        />
+                        
+                        <%= form_with(
+                            url: account_deposits_path(@account),
+                            method: :get,
+                            data: { turbo_frame: "deposits" },
+                            class: "flex items-center gap-2"
+                            ) do |form| %>
+                            <%= form.text_field :q, 
+                                                value: params[:q], 
+                                                placeholder: "Search by reference",
+                                                class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5" %>
+                            <%= form.submit "Search", class: "px-4 py-2 border rounded hover:bg-gray-200" %>
+                        <% end %>
+                        
                     </div>
                 </div>
 
@@ -101,9 +109,9 @@
             </div>
         </div>
     </div>
-<% end %>
 
-<div class="mt-4 mb-32 flex justify-center pagination flex-wrap text-gray-700 -mt-px">
-    <%= paginate @deposits, params: { q: params[:q] } %>
-</div>
+    <div class="mt-4 mb-32 flex justify-center pagination flex-wrap text-gray-700 -mt-px">
+        <%= paginate @deposits, params: { q: params[:q] } %>
+    </div>
+<% end %>
 
