@@ -31,7 +31,7 @@
 # Recommended practical roadmap
 ## Phase 1 — Core Banking
 
-### Milestone 1 — Foundation [DONE]
+### Milestone 1 — Foundation
 
 + Rails 8
 + PostgreSQL
@@ -40,7 +40,7 @@
 + Basic layout
 + Home page
 
-### Milestone 2 — Authentication [DONE]
+### Milestone 2 — Authentication
 
 + Registration
 + Login
@@ -48,7 +48,7 @@
 + Profile
 + Authorization
 
-### Milestone 3 — Bank Account [DONE]
+### Milestone 3 — Bank Account
 
 + Account creation
 + Account number
