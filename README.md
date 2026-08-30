@@ -55,7 +55,7 @@
 + Balance
 + Account status
 
-### Milestone 4 — Deposit [HERE]
+### Milestone 4 — Deposit
 + Deposit form
 + Validation
 + Balance update
@@ -75,8 +75,7 @@
     - Proper webhook processing on the Digital Bank side
     - End-to-end deposit flow verification
 
-### Milestone 5 — Withdrawal
-
+### Milestone 5 — Withdrawal [HERE]
 + Withdrawal form
 + Insufficient balance
 + Balance update
