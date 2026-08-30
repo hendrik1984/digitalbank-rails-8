@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # namespace
   namespace :api do
     namespace :v1 do
-      get "payment_webhooks", to: "payment_webhooks#create"
+      #get "payment_webhooks", to: "payment_webhooks#create"
       post "payment_webhooks", to: "payment_webhooks#create"
     end
   end

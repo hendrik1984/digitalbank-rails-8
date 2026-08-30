@@ -103,7 +103,7 @@
     </div>
 <% end %>
 
-<div class="mt-6">
-  <%= paginate @deposits, params: { q: params[:q] } %>
+<div class="mt-4 mb-32 flex justify-center pagination flex-wrap text-gray-700 -mt-px">
+    <%= paginate @deposits, params: { q: params[:q] } %>
 </div>
 

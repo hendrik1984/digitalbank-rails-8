@@ -12,6 +12,7 @@ class Deposit < ApplicationRecord
   validates :status, presence: true
 
   enum :status, {
+    success: "success",
     pending: "pending",
     completed: "completed",
     failed: "failed",

@@ -8,7 +8,7 @@ class DepositsController < ApplicationController
                 .search(params[:q])
                 .order(created_at: :desc)
                 .page(params[:page])
-                .per(25)
+                .per(10)
   end
 
   def new
